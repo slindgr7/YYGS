@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YumYum Gi Mi Sum</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./JS/menu.js"></script>
+    <script type="module" src="./JS/cart.js"></script>
+    <script type="module" src="./JS/eta.js"></script>
+    <script type="module" src="./JS/receipt.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Vy 1: Meny -->
+    <div id="menuView" class="viewOne">
+        <header>
+            <button id="cartBtn">
+                <img class="cartImg" src="images/cart.png" alt="Varukorg">
+            </button>
+            <h1>MENY</h1>
+        </header>
+        <section id="menuItems">
+            <!-- wontons -->
+        </section>
+        <section id="dipsSection">
+            <h3>DIPSÅS</h3>
+            <!-- såser -->
+        </section>
+        <section id="drinksSection">
+            <h3>DRICKA</h3>
+            <!-- drycker -->
+        </section>
+    </div>
+
+    <!-- Vy 2: Varukorg -->
+    <div id="cartView" class="viewTwo hidden">
+        <header>
+            <img src="images/cart.png" alt="Varukorg">
+        </header>
+        <section id="cartItems">
+            <!-- Här laddas valda produkter -->
+        </section>
+        <section>
+            <section>
+                <div>
+                    <p>Totalt: 0 SEK</p>
+                    <p>inkl 20% moms</p>
+                </div>
+                <p id="totalPrice"></p>
+            </section>
+            <button id="checkoutBtn">Take my money!</button>
+        </section>
+    </div>
+
+    <!-- Vy 3: ETA -->
+    <div id="etaView" class="viewThree hidden">
+        <header>
+            <h4>DINA WONTONS TILLAGAS!</h4>
+        </header>
+        <img class="box" src="images/boxtop.png" alt="Wonton-förpackning">
+        <p id="etaTime">ETA 5 MIN</p>
+        <p id="orderNr">Beställningsnummer: #X</p>
+        <button id="viewReceiptBtn">Se Kvitto</button>
+    </div>
+
+    <!-- Vy 4: Kvitto -->
+    <dialog id="receiptDialog">
+        <section id="receipt">
+            <img src="images/logo.png" alt="YYGS-logo">
+            <h3>Kvitto</h3>
+            <p id="receipt-order-number">Beställningsnummer: #XXXXXX</p>
+            <section id="receiptItems">
+
+            </section>
+            <p id="receiptTotal">Totalt: 0 SEK</p>
+        </section>
+        <button id="newOrderBtn">Gör en ny beställning</button>
+    </dialog>
+</body>
+</html>
