@@ -56,10 +56,30 @@
 }
 
 
-
 .box {
     width: 21rem;
 }
 
 
+.h3Menu {
+    display: flex;
+    gap: 0.5rem;
+    align-items: end;
+    
+    
+    .dots {
+        border-bottom: 2px dotted white;
+       
+        display: inline-block;
+        width: fit-content; 
+        height: 1px; 
+        flex-grow: 1;
+        
+    }
+}
+
+.span2 {
+    display: flex;
+ 
+}
 
