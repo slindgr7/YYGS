@@ -36,9 +36,10 @@
     </div>
 
     <!-- Vy 2: Varukorg -->
-    <dialog id="cartView" class="viewTwo hidden">
+     <section class="dialog-container hide">
+        <dialog id="cartView" class="viewTwo">
         <header>
-            <img src="images/cart.png" alt="Varukorg">
+            <img id="closeCart" src="images/cart.png" alt="Varukorg">
         </header>
         <section id="cartItems">
             <!-- Här laddas valda produkter -->
@@ -53,8 +54,8 @@
             </section>
             <button id="checkoutBtn">Take my money!</button>
         </section>
-    </dialog>
-
+        </dialog>
+    </section>
     <!-- Vy 3: ETA -->
     <div id="etaView" class="viewThree hidden">
         <header>

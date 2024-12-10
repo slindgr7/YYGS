@@ -19,7 +19,7 @@ let url = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu";
 const response = await fetch(url, options);
 const data = await response.json();
 const menu = data.items
-console.log(data.items);
+// console.log(data.items);
 
 
 
@@ -29,34 +29,45 @@ let drinks = menu.filter (item => item.type === "drink")
 
 // Wontons
 wontons.forEach(element => {
+  const getMenu = document.querySelector('#menuItems');
 
-    const getMenu = document.querySelector('#menuItems')
+ 
+  let itemDiv = document.createElement('div');
+  
 
-    let itemName = document.createElement('h3')
-    let span1 = document.createElement('span')
-    let span2 = document.createElement('span')
-    let itemIngredients = document.createElement('p')
+  let itemName = document.createElement('h3');
+  let span1 = document.createElement('span');
+  let span2 = document.createElement('span');
+  let itemIngredients = document.createElement('p');
 
-    itemName.classList.add('h3Menu')
-    span1.classList.add('dots')
-    span2.classList.add('span2')
+  itemName.classList.add('h3Menu');
+  span1.classList.add('dots');
 
-    itemName.innerText = element.name 
-    span2.innerText = element.price + " SEK"
-    itemIngredients.innerText = element.ingredients.join(', ')
+  itemName.innerText = element.name;
+  span2.innerText = element.price + " SEK";
+  itemIngredients.innerText = element.ingredients.join(', ');
 
-    itemName.appendChild(span1)
-    itemName.appendChild(span2)
+  itemName.appendChild(span1);
+  itemName.appendChild(span2);
 
-    getMenu.appendChild(itemName)
-    getMenu.appendChild(itemIngredients)
+  itemDiv.appendChild(itemName);
+  itemDiv.appendChild(itemIngredients);
+
+  itemDiv.addEventListener('click', () => {
+    itemDiv.classList.add('selected')
 });
+ 
+  getMenu.appendChild(itemDiv);
+});
+
+
+
 
 function createSubMenu(id) {
     const headline = document.getElementById(id)
     let spanDip1 = document.createElement('span')
     let spanDip2 = document.createElement('span')
-    console.log(headline)
+    
 
     headline.classList.add('h3Menu')
     spanDip1.classList.add('dots')
@@ -67,8 +78,6 @@ function createSubMenu(id) {
     headline.appendChild(spanDip1)
     headline.appendChild(spanDip2)
 }
-
-
 
 
 createSubMenu('dipH3')
