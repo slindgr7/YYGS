@@ -33,6 +33,11 @@
     flex-direction: column;
     padding: 0.8rem;
     gap: 0.5rem;
+    
+    section {
+        background-color: var(--background-color);
+        border-radius: 8px;
+    }
 
     header {
         h1 {
@@ -50,7 +55,41 @@
             border-radius: 4px;
         }
     }
+
+    #menuItems {
+
+
+        div {
+
+            padding: 1rem;
+            border-bottom: 1px solid rgba(244, 243, 241, 0.13);
+           
+            
+            &:first-of-type {
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+            
+            &:nth-child(5) {
+                border-bottom: none;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            
+            p {
+                font-size: var(--font-size-base);
+                margin-top: 0.5rem;
+            }
+
+        }
+    
+
+
+    }
 }
+
+
 
 .cartImg {
     width: 31px;
@@ -61,7 +100,7 @@
     display: flex;
     gap: 0.5rem;
     align-items: end;
-    
+
     .dots {
         border-bottom: 2px dotted white;
         display: inline-block;
@@ -70,6 +109,11 @@
         flex-grow: 1;
         
     }
+    
+}
+
+.selected {
+    background-color: var(--text-color-primary);
 }
 
 
@@ -100,15 +144,10 @@
         width: 31px;
         height: 30px;
         position: absolute;
-        top: 1.6rem;
-        right: 1.6rem;
+        top: 1.4rem;
+        right: 1.4rem;
     }
 }
-
-.selected {
-    background-color: var(--text-color-primary);
-}
-
 
 
 /* ETA-VY */
