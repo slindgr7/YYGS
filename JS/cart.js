@@ -1,3 +1,5 @@
+import { showCartItems } from "./menu.js"
+
 const showCartBtn = document.querySelector('#cartBtn')
 const dialog = document.querySelector('#cartView')
 const closeCart = document.querySelector('#closeCart')
@@ -9,6 +11,7 @@ dialog.addEventListener('click', event => {
 })
 showCartBtn.addEventListener('click', () => {
 	dialogContainer.classList.remove('hide')
+	showCartItems()
 	dialog.show()
 })
 

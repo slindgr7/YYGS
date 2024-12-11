@@ -21,14 +21,7 @@ const data = await response.json();
 const menu = data.items
 
 
-// function showCartItems(cart){
-//   console.clear()
-//   let orderedItems = cart
-//   //console.log(orderedItems)
-//   orderedItems.forEach((element)=> {
-//   //console.log(`Ordered: ${element.itemName}, ${element.itemPrice}, ${element.quantity}`)
-//   })
-// }
+
 
 let orderedItems = []
 
@@ -60,7 +53,6 @@ function addToCart(name, price, itemDiv) {
   }
 
   console.log(orderedItems)
-
   //showCartItems(orderedItems)
 }
 
@@ -103,7 +95,6 @@ wontons.forEach(element => {
 
 
 
-
 function createSubMenu(id) {
   const headline = document.getElementById(id)
   let spanDip1 = document.createElement('span')
@@ -131,8 +122,13 @@ dipSauce.forEach(element => {
     const getDip = document.querySelector('#dipSection')
     let dipName = document.createElement ('p')
     dipName.innerText = element.name
+    dipName.addEventListener('click', ()=> {
+      addToCart(element.name, element.price, dipName)
+      console.log("hej")
+    })
 
     getDip.appendChild(dipName)
+    
 })
 
 
@@ -144,6 +140,41 @@ drinks.forEach (element => {
     let drinkName = document.createElement('p')
 
     drinkName.innerText = element.name
+    drinkName.addEventListener('click', ()=> {
+      addToCart(element.name, element.price, drinkName)
+      console.log("hej")
+    })
 
     getDrinks.appendChild(drinkName)
 })
+
+
+
+function showCartItems(){
+  let cartItems = document.querySelector('#cartItems')
+  cartItems.textContent = ""
+  orderedItems.forEach((element)=> {
+
+    let cartItemDiv = document.createElement('div')
+    let itemName = document.createElement('h3');
+    let span1 = document.createElement('span');
+    let span2 = document.createElement('span');
+    
+    itemName.classList.add('h3Menu');
+    span1.classList.add('dots');
+
+    itemName.innerText = element.itemName
+    span2.innerText = element.itemPrice + " SEK";
+    console.log(element)
+
+    cartItemDiv.appendChild(itemName)
+    itemName.appendChild(span1)
+    itemName.appendChild(span2)
+    cartItems.appendChild(cartItemDiv)
+  })
+
+
+  
+}
+
+export {showCartItems}

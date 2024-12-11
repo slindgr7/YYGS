@@ -64,7 +64,7 @@
         div {
 
             padding: 1rem;
-            border-bottom: 1px solid rgba(244, 243, 241, 0.13);
+            border-bottom: 1px dotted rgba(175, 175, 175, 0.514);
            
             
             &:first-of-type {
@@ -100,6 +100,7 @@
             align-self: auto;
             flex: 0 0 100%
         }
+        
         p {
             background-color: var(--background-color-muted);
             width: fit-content;
@@ -109,6 +110,7 @@
             border-radius: 4px;
         }
     }
+
 
     #drinkSection {
         display: flex;
@@ -132,6 +134,13 @@
     }
 }
 
+#dipSection, #drinkSection{
+    p.selected {
+        background-color: var(--text-color-primary);
+    }
+}
+
+
 .cartImg {
     width: 31px;
     height: 30px;
@@ -140,44 +149,30 @@
 .h3Menu {
     display: flex;
     gap: 0.5rem;
-    align-items: end;
-
-    .dots {
-        border-bottom: 2px dotted white;
-        display: inline-block;
-        width: fit-content; 
-        height: 1px; 
-        flex-grow: 1;
-        
-    }
-    
+    align-items: end;   
 }
 
-.selected {
-    background-color: var(--text-color-primary);
+.dots {
+    border-bottom: 2px dotted white;
+    display: inline-block;
+    width: fit-content; 
+    height: 1px; 
+    flex-grow: 1;  
 }
 
 
-
-/* CART-VY */
 
 .hide {
     display: none;
 }
 
+
+/* CART-VY */
+
 .dialog-container {
 	position: fixed;
     top: 0%;
     width: 100%;
-}
-
-.viewTwo {
-	position: relative;
-    display: flex;
-    height: 100vh;
-    width: 100%;
-    flex-direction: column;
-    padding: 0.8rem;
 
     #closeCart {
         width: 31px;
@@ -186,12 +181,92 @@
         top: 1.4rem;
         right: 1.4rem;
     }
-}
 
+    .viewTwo {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        width: 100%;
+        padding: 0.8rem;
+        background-color: rgb(235, 235, 235);
+
+        .cart-items {
+            color: var(--text-color-primary);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .dots {
+                    border-bottom: 2px dotted var(--text-color-primary);
+                    display: inline-block;
+                    width: fit-content; 
+                    height: 1px; 
+                    flex-grow: 1;  
+            }
+            
+            }
+
+            div {
+                padding-bottom: 0.5rem;
+                border-bottom: 1px dotted rgba(175, 175, 175, 0.514);
+            }
+            
+            
+        .pay-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+                section {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    background-color: var(--accent-color);
+                    border-radius: 4px;
+
+                    div {
+                        
+                        p:first-of-type {
+                            font-size: var(--font-size-large);
+                            font-weight: bold;
+                        }
+
+                        p:nth-child(2) {
+                            font-size: var(--font-size-base);
+                        }
+                    }
+
+                    p {
+                        font-size: var(--font-size-xxlarge);
+                    }
+
+                }
+
+                button {
+                    padding: 1.7rem;
+                    font-size: var(--font-size-xlarge);
+                    font-weight: bold;
+                    color: var(--text-color-secondary);
+                    background-color: var(--background-color-dark);
+                    border-style: none;
+                    border-radius: 4px;
+                }
+            }
+        
+
+    }
+
+}
 
 
 /* ETA-VY */
 
 .box {
     width: 21rem;
+}
+
+.selected {
+    background-color: var(--text-color-primary);
 }
