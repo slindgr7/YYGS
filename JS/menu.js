@@ -1,3 +1,6 @@
+import { totalSum } from "./cart.js";
+
+
 const key = "yum-7BTxHCyHhzI";
 
 const tenant = {
@@ -53,15 +56,15 @@ function addToCart(name, price, itemDiv) {
   }
 
   console.log(orderedItems)
-  //showCartItems(orderedItems)
+  totalSum()
+  
 }
 
-// async funktion
 let wontons = menu.filter(item => item.type === "wonton");
 let dipSauce = menu.filter(item => item.type === "dip")
 let drinks = menu.filter (item => item.type === "drink")
 
-// Wontons  
+
 wontons.forEach(element => {
   const getMenu = document.querySelector('#menuItems');
 
@@ -150,31 +153,5 @@ drinks.forEach (element => {
 
 
 
-function showCartItems(){
-  let cartItems = document.querySelector('#cartItems')
-  cartItems.textContent = ""
-  orderedItems.forEach((element)=> {
 
-    let cartItemDiv = document.createElement('div')
-    let itemName = document.createElement('h3');
-    let span1 = document.createElement('span');
-    let span2 = document.createElement('span');
-    
-    itemName.classList.add('h3Menu');
-    span1.classList.add('dots');
-
-    itemName.innerText = element.itemName
-    span2.innerText = element.itemPrice + " SEK";
-    console.log(element)
-
-    cartItemDiv.appendChild(itemName)
-    itemName.appendChild(span1)
-    itemName.appendChild(span2)
-    cartItems.appendChild(cartItemDiv)
-  })
-
-
-  
-}
-
-export {showCartItems}
+export { orderedItems}

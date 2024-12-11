@@ -58,18 +58,21 @@
     </section>
     
     <!-- Vy 3: ETA -->
-    <div id="etaView" class="viewThree hidden">
-        <header>
-            <h4>DINA WONTONS TILLAGAS!</h4>
-        </header>
+    <div id="etaView" class="viewThree hide">
         <img class="box" src="images/boxtop.png" alt="Wonton-förpackning">
-        <p id="etaTime">ETA 5 MIN</p>
-        <p id="orderNr">Beställningsnummer: #X</p>
-        <button id="viewReceiptBtn">Se Kvitto</button>
+        <div>
+        <h4>DINA WONTONS TILLAGAS!</h4>
+        <p id="etaTime">ETA ?? MIN</p>
+        <p id="orderNr">#XXXXXX</p>
+        </div>
+        <div>
+        <button id="viewReceiptBtn">SE KVITTO</button>
+        <button id="newOrderBtn">GÖR EN NY BESTÄLLNING</button>
+        </div>
     </div>
 
     <!-- Vy 4: Kvitto -->
-    <dialog id="receiptDialog">
+    <dialog id="receiptDialog hide">
         <section id="receipt">
             <img src="images/logo.png" alt="YYGS-logo">
             <h3>Kvitto</h3>
