@@ -105,19 +105,22 @@ wontons.forEach(element => {
 
 
 function createSubMenu(id) {
-    const headline = document.getElementById(id)
-    let spanDip1 = document.createElement('span')
-    let spanDip2 = document.createElement('span')
-    
+  const headline = document.getElementById(id)
+  let spanDip1 = document.createElement('span')
+  let spanDip2 = document.createElement('span')
 
-    headline.classList.add('h3Menu')
-    spanDip1.classList.add('dots')
-    spanDip2.classList.add('span2')
 
-    spanDip2.innerText = "19 SEK"
+  headline.classList.add('h3Menu')
+  spanDip1.classList.add('dots')
+  spanDip2.classList.add('span2')
+  if(id === 'dipH3') {
+    spanDip2.innerText = dipSauce[0].price + " SEK"
+  } else if (id === 'drinkH3') {
+    spanDip2.innerText = drinks[0].price + " SEK"
+  }
 
-    headline.appendChild(spanDip1)
-    headline.appendChild(spanDip2)
+  headline.appendChild(spanDip1)
+  headline.appendChild(spanDip2)
 }
 
 
