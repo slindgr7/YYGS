@@ -19,22 +19,62 @@ let url = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu";
 const response = await fetch(url, options);
 const data = await response.json();
 const menu = data.items
-// console.log(data.items);
 
 
+// function showCartItems(cart){
+//   console.clear()
+//   let orderedItems = cart
+//   //console.log(orderedItems)
+//   orderedItems.forEach((element)=> {
+//   //console.log(`Ordered: ${element.itemName}, ${element.itemPrice}, ${element.quantity}`)
+//   })
+// }
 
+let orderedItems = []
+
+function addToCart(name, price, itemDiv) {
+  let menuItem = {itemName: name, itemPrice: price, quantity: 1}
+
+  // En array för att hålla maträtternas namn
+  let checkDuplicate = []
+
+  // Lägger in varje dels namn av det beställda i checkDuplicate arrayen
+  orderedItems.forEach((element)=>{
+    checkDuplicate.push(element.itemName)
+  })
+
+  // Kollar efter dubbletter
+  let doesItemExist = checkDuplicate.includes(menuItem.itemName)
+
+  // Om maträtten inte redan finns i beställningen så läggs den till i beställningen
+  if(doesItemExist) {
+    
+    let itemToBeRemoved = name
+    orderedItems = orderedItems.filter(element => element.itemName !== itemToBeRemoved);
+
+    itemDiv.classList.remove("selected");
+    
+  } else {
+    orderedItems.push(menuItem)
+    itemDiv.classList.add('selected')
+  }
+
+  console.log(orderedItems)
+
+  //showCartItems(orderedItems)
+}
+
+// async funktion
 let wontons = menu.filter(item => item.type === "wonton");
 let dipSauce = menu.filter(item => item.type === "dip")
 let drinks = menu.filter (item => item.type === "drink")
 
-// Wontons
+// Wontons  
 wontons.forEach(element => {
   const getMenu = document.querySelector('#menuItems');
 
  
   let itemDiv = document.createElement('div');
-  
-
   let itemName = document.createElement('h3');
   let span1 = document.createElement('span');
   let span2 = document.createElement('span');
@@ -54,7 +94,8 @@ wontons.forEach(element => {
   itemDiv.appendChild(itemIngredients);
 
   itemDiv.addEventListener('click', () => {
-    itemDiv.classList.add('selected')
+    addToCart(element.name, element.price, itemDiv)
+    
 });
  
   getMenu.appendChild(itemDiv);
@@ -103,4 +144,3 @@ drinks.forEach (element => {
 
     getDrinks.appendChild(drinkName)
 })
-
