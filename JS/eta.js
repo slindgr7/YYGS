@@ -6,12 +6,16 @@ const menuView = document.querySelector('#menuView')
 const newOrderBtn = document.querySelector('#newOrderBtn'); 
 const cartItems = document.querySelector('#cartItems'); 
 const totalPrice = document.querySelector('#totalPrice');
+const etaTime = document.querySelector('#etaTime');
+const orderNr = document.querySelector('#orderNr');
 
 checkoutBtn.addEventListener('click', () => {
     
-    currentView.classList.add('hide')
+  currentView.classList.add('hide')
     menuView.classList.add('hide')
     etaView.classList.remove('hide')
+
+
 
 })
 

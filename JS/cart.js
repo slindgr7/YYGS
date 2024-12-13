@@ -1,9 +1,10 @@
-import { orderedItems } from "./menu.js"
+import { orderedItems, removeFromCart } from "./menu.js"
 
 const showCartBtn = document.querySelector('#cartBtn')
 const dialog = document.querySelector('#cartView')
 const closeCart = document.querySelector('#closeCart')
 const dialogContainer = document.querySelector('.dialog-container')
+
 
 
 dialog.addEventListener('click', event => {
@@ -37,6 +38,7 @@ function totalSum () {
 }
 
 
+
 function showCartItems(){
 	let cartItems = document.querySelector('#cartItems')
 	cartItems.textContent = ""
@@ -50,7 +52,8 @@ function showCartItems(){
 	  let increaseBtn = document.createElement('button')
 	  let volumeDiv = document.createElement('div')
 	  let amount = document.createElement('p')
-  
+	  
+
 	  itemName.classList.add('h3Menu');
 	  span1.classList.add('dots');
   
@@ -59,7 +62,28 @@ function showCartItems(){
 	  decreaseBtn.textContent = "-"
 	  increaseBtn.textContent = "+"
 	  amount.textContent = `${element.quantity} stycken`;
-  
+
+	  decreaseBtn.addEventListener('click', () => {
+		element.quantity = element.quantity-1
+		amount.textContent = `${element.quantity} stycken`;
+		totalSum()
+		if (element.quantity < 1) {
+			let menuDiv = document.querySelector(`#${element.id}`)
+			menuDiv.classList.remove('selected')
+			cartItems.removeChild(cartItemDiv)
+			removeFromCart(element.itemName)
+			totalSum()
+			
+		}
+	  })
+
+
+	  increaseBtn.addEventListener('click', () => {
+		element.quantity = element.quantity+1
+		amount.textContent = `${element.quantity} stycken`;
+		totalSum()
+	})
+	  
 	  cartItemDiv.appendChild(itemName)
 	  itemName.appendChild(span1)
 	  itemName.appendChild(span2)

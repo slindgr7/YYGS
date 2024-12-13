@@ -25,12 +25,16 @@ const menu = data.items
 
 
 
-
 let orderedItems = []
 
-function addToCart(name, price, itemDiv) {
-  let menuItem = {itemName: name, itemPrice: price, quantity: 1}
 
+function removeFromCart(cartItemName){
+  orderedItems = orderedItems.filter(element => element.itemName !== cartItemName);
+
+}
+
+function addToCart(name, price, itemDiv) {
+  let menuItem = {itemName: name, itemPrice: price, quantity: 1, id: itemDiv.id}
   // En array för att hålla maträtternas namn
   let checkDuplicate = []
 
@@ -46,7 +50,7 @@ function addToCart(name, price, itemDiv) {
   if(doesItemExist) {
     
     let itemToBeRemoved = name
-    orderedItems = orderedItems.filter(element => element.itemName !== itemToBeRemoved);
+    removeFromCart(itemToBeRemoved)
 
     itemDiv.classList.remove("selected");
     
@@ -60,10 +64,12 @@ function addToCart(name, price, itemDiv) {
   
 }
 
+
 let wontons = menu.filter(item => item.type === "wonton");
 let dipSauce = menu.filter(item => item.type === "dip")
 let drinks = menu.filter (item => item.type === "drink")
 
+let counter = 0
 
 wontons.forEach(element => {
   const getMenu = document.querySelector('#menuItems');
@@ -74,6 +80,8 @@ wontons.forEach(element => {
   let span1 = document.createElement('span');
   let span2 = document.createElement('span');
   let itemIngredients = document.createElement('p');
+  itemDiv.id = `menuItem${counter}`
+  counter += 1
 
   itemName.classList.add('h3Menu');
   span1.classList.add('dots');
@@ -124,6 +132,8 @@ dipSauce.forEach(element => {
  
     const getDip = document.querySelector('#dipSection')
     let dipName = document.createElement ('p')
+    dipName.id = `menuItem${counter}`
+    counter += 1
     dipName.innerText = element.name
     dipName.addEventListener('click', ()=> {
       addToCart(element.name, element.price, dipName)
@@ -141,11 +151,11 @@ createSubMenu('drinkH3')
 drinks.forEach (element => {
     const getDrinks = document.querySelector('#drinkSection')
     let drinkName = document.createElement('p')
-
+    drinkName.id = `menuItem${counter}`
+    counter += 1
     drinkName.innerText = element.name
     drinkName.addEventListener('click', ()=> {
       addToCart(element.name, element.price, drinkName)
-      console.log("hej")
     })
 
     getDrinks.appendChild(drinkName)
@@ -154,4 +164,4 @@ drinks.forEach (element => {
 
 
 
-export { orderedItems}
+export { orderedItems, removeFromCart}
