@@ -72,17 +72,29 @@
     </div>
 
     <!-- Vy 4: Kvitto -->
-    <dialog id="receiptDialog hide">
-        <section id="receipt">
+     <section id="receiptView" class="viewFour hide">
+        <section class="receipt">
+            
+            <div class="receipt-div" >
             <img src="images/logo.png" alt="YYGS-logo">
-            <h3>Kvitto</h3>
-            <p id="receipt-order-number">Beställningsnummer: #XXXXXX</p>
+            <h3>KVITTO</h3>
+            <p id="receiptOrderNr">#XXXXXX</p>
+            </div>
+
             <section id="receiptItems">
 
             </section>
-            <p id="receiptTotal">Totalt: 0 SEK</p>
+
+            <section class="amountSection">
+            <div>
+            <p>TOTALT</p>
+            <p>inkl 20% moms</p>
+            </div>
+            <p id="priceReceipt">0</p>
+            </section>
+
         </section>
-        <button id="newOrderBtn">Gör en ny beställning</button>
-    </dialog>
+        <button id="newOrderBtn2">GÖR EN NY BESTÄLLNING</button>
+     </section>
 </body>
 </html>

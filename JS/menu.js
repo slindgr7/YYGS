@@ -21,7 +21,12 @@ let url = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu";
 
 const response = await fetch(url, options);
 const data = await response.json();
+
 const menu = data.items
+
+console.log(menu)
+
+
 
 
 
@@ -33,8 +38,10 @@ function removeFromCart(cartItemName){
 
 }
 
-function addToCart(name, price, itemDiv) {
-  let menuItem = {itemName: name, itemPrice: price, quantity: 1, id: itemDiv.id}
+let counterID = 0
+
+function addToCart(name, price, itemDiv, id) {
+  let menuItem = {itemName: name, itemPrice: price, quantity: 1, elementId: itemDiv.id, menuId: id}
   // En array för att hålla maträtternas namn
   let checkDuplicate = []
 
@@ -59,7 +66,7 @@ function addToCart(name, price, itemDiv) {
     itemDiv.classList.add('selected')
   }
 
-  console.log(orderedItems)
+
   totalSum()
   
 }
@@ -69,7 +76,7 @@ let wontons = menu.filter(item => item.type === "wonton");
 let dipSauce = menu.filter(item => item.type === "dip")
 let drinks = menu.filter (item => item.type === "drink")
 
-let counter = 0
+let counter = 1
 
 wontons.forEach(element => {
   const getMenu = document.querySelector('#menuItems');
@@ -97,7 +104,7 @@ wontons.forEach(element => {
   itemDiv.appendChild(itemIngredients);
 
   itemDiv.addEventListener('click', () => {
-    addToCart(element.name, element.price, itemDiv)
+    addToCart(element.name, element.price, itemDiv, element.id)
     
 });
  
@@ -136,8 +143,8 @@ dipSauce.forEach(element => {
     counter += 1
     dipName.innerText = element.name
     dipName.addEventListener('click', ()=> {
-      addToCart(element.name, element.price, dipName)
-      console.log("hej")
+      addToCart(element.name, element.price, dipName, element.id)
+
     })
 
     getDip.appendChild(dipName)
@@ -155,7 +162,7 @@ drinks.forEach (element => {
     counter += 1
     drinkName.innerText = element.name
     drinkName.addEventListener('click', ()=> {
-      addToCart(element.name, element.price, drinkName)
+      addToCart(element.name, element.price, drinkName, element.id)
     })
 
     getDrinks.appendChild(drinkName)

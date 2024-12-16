@@ -52,7 +52,7 @@ function showCartItems(){
 	  let increaseBtn = document.createElement('button')
 	  let volumeDiv = document.createElement('div')
 	  let amount = document.createElement('p')
-	  
+	
 
 	  itemName.classList.add('h3Menu');
 	  span1.classList.add('dots');
@@ -66,9 +66,13 @@ function showCartItems(){
 	  decreaseBtn.addEventListener('click', () => {
 		element.quantity = element.quantity-1
 		amount.textContent = `${element.quantity} stycken`;
+		let itemToBeRemoved = element.itemName
+    	removeFromCart(itemToBeRemoved)
+	
 		totalSum()
 		if (element.quantity < 1) {
-			let menuDiv = document.querySelector(`#${element.id}`)
+			
+			let menuDiv = document.querySelector(`#${element.elementId}`)
 			menuDiv.classList.remove('selected')
 			cartItems.removeChild(cartItemDiv)
 			removeFromCart(element.itemName)
