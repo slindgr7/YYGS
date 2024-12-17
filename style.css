@@ -64,14 +64,38 @@ body {
         }
        
         button {
-            position: absolute;
-            top: 0.8rem;
-            right: 0.8rem;
+            display: flex;
+            justify-self: flex-end;
+            position: relative;
             padding: 0.7rem;
             border-style: none;
             border-radius: 4px;
             cursor: pointer;
+            box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.16);
         }
+
+
+         div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 18px;
+            height: 18px;
+            background: rgba(235, 87, 87, 1);
+            border-radius: 50%;
+            position: absolute;
+            right: 1%;
+            top: 0.5%;
+            z-index: 100;
+
+            p {
+                font-size: 10px;
+            }
+         }
+
+         div.hide {
+            display: none;
+         }
     }
 
     #menuItems {
@@ -258,7 +282,7 @@ body {
 
                         p:nth-child(2) {
                             font-size: var(--font-size-base);
-                            font-weight: 500;
+                            font-weight: 400;
                         }
                     }
 

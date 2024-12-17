@@ -4,7 +4,7 @@ const showCartBtn = document.querySelector('#cartBtn')
 const dialog = document.querySelector('#cartView')
 const closeCart = document.querySelector('#closeCart')
 const dialogContainer = document.querySelector('.dialog-container')
-
+const counterContainer = document.querySelector('.counterContainer')
 
 
 dialog.addEventListener('click', event => {
@@ -13,6 +13,7 @@ dialog.addEventListener('click', event => {
 showCartBtn.addEventListener('click', () => {
 	dialogContainer.classList.remove('hide')
 	showCartItems()
+	counterContainer.classList.add('hide')
 	dialog.show()
 })
 
@@ -22,6 +23,7 @@ dialogContainer.addEventListener('click', closeDialog)
 function closeDialog() {
 	dialog.close()
 	dialogContainer.classList.add('hide')
+	counterContainer.classList.remove('hide')
 }
 
 

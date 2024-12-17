@@ -56,7 +56,6 @@ function getReceipt() {
 
 }
 
-
 newOrderBtn.addEventListener('click', () => {    
         receiptView.classList.add('hide');
         menuView.classList.remove('hide');
@@ -65,10 +64,12 @@ newOrderBtn.addEventListener('click', () => {
 
         const selectedItems = document.querySelectorAll('.selected');
 
+        
         receiptItems.textContent = '';
         priceReceipt.innerText = '0 SEK'
         receiptOrderNr.innerText = ''
-        etaOrderNr.innerText = ''
+        etaOrderNr.innerText = ''   
+        
 
         selectedItems.forEach(item => {
             item.classList.remove('selected');

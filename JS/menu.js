@@ -21,14 +21,22 @@ let url = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu";
 
 const response = await fetch(url, options);
 const data = await response.json();
-
 const menu = data.items
+const counterCart = document.getElementById('counterCart');
+const counterContainer = document.querySelector('.counterContainer')
 
-console.log(menu)
+function updateCounterCart() {
 
+  const totalItems = orderedItems.reduce((sum, item) => sum + item.quantity, 0);
+  
+  if (totalItems > 0) {
+    counterCart.innerText = totalItems;
 
+  } else {
+    counterCart.innerText = '';
 
-
+  }
+}
 
 let orderedItems = []
 
@@ -42,51 +50,51 @@ let counterID = 0
 
 function addToCart(name, price, itemDiv, id) {
   let menuItem = {itemName: name, itemPrice: price, quantity: 1, elementId: itemDiv.id, menuId: id}
-  // En array för att hålla maträtternas namn
+ 
   let checkDuplicate = []
 
-  // Lägger in varje dels namn av det beställda i checkDuplicate arrayen
+  
   orderedItems.forEach((element)=>{
     checkDuplicate.push(element.itemName)
   })
 
-  // Kollar efter dubbletter
+  
   let doesItemExist = checkDuplicate.includes(menuItem.itemName)
 
-  // Om maträtten inte redan finns i beställningen så läggs den till i beställningen
+  
   if(doesItemExist) {
     
     let itemToBeRemoved = name
     removeFromCart(itemToBeRemoved)
 
-    itemDiv.classList.remove("selected");
+    itemDiv.classList.remove("selected")
     
   } else {
     orderedItems.push(menuItem)
     itemDiv.classList.add('selected')
   }
 
-
+  updateCounterCart()
   totalSum()
   
 }
 
 
-let wontons = menu.filter(item => item.type === "wonton");
+let wontons = menu.filter(item => item.type === "wonton")
 let dipSauce = menu.filter(item => item.type === "dip")
 let drinks = menu.filter (item => item.type === "drink")
 
 let counter = 1
 
 wontons.forEach(element => {
-  const getMenu = document.querySelector('#menuItems');
+  const getMenu = document.querySelector('#menuItems')
 
  
-  let itemDiv = document.createElement('div');
-  let itemName = document.createElement('h3');
-  let span1 = document.createElement('span');
-  let span2 = document.createElement('span');
-  let itemIngredients = document.createElement('p');
+  let itemDiv = document.createElement('div')
+  let itemName = document.createElement('h3')
+  let span1 = document.createElement('span')
+  let span2 = document.createElement('span')
+  let itemIngredients = document.createElement('p')
   itemDiv.id = `menuItem${counter}`
   counter += 1
 
@@ -95,7 +103,7 @@ wontons.forEach(element => {
 
   itemName.innerText = element.name;
   span2.innerText = element.price + " SEK";
-  itemIngredients.innerText = element.ingredients.join(', ');
+  itemIngredients.innerText = element.ingredients.join(', ')
 
   itemName.appendChild(span1);
   itemName.appendChild(span2);
@@ -104,11 +112,11 @@ wontons.forEach(element => {
   itemDiv.appendChild(itemIngredients);
 
   itemDiv.addEventListener('click', () => {
-    addToCart(element.name, element.price, itemDiv, element.id)
     
+    addToCart(element.name, element.price, itemDiv, element.id)
+    counterContainer.classList.remove('hide')
 });
- 
-  getMenu.appendChild(itemDiv);
+  getMenu.appendChild(itemDiv)
 });
 
 
@@ -144,7 +152,7 @@ dipSauce.forEach(element => {
     dipName.innerText = element.name
     dipName.addEventListener('click', ()=> {
       addToCart(element.name, element.price, dipName, element.id)
-
+      counterContainer.classList.remove('hide')
     })
 
     getDip.appendChild(dipName)
@@ -163,6 +171,7 @@ drinks.forEach (element => {
     drinkName.innerText = element.name
     drinkName.addEventListener('click', ()=> {
       addToCart(element.name, element.price, drinkName, element.id)
+      counterContainer.classList.remove('hide')
     })
 
     getDrinks.appendChild(drinkName)
