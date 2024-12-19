@@ -20,7 +20,7 @@ const tenant = {
 let url = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/menu";
 
 const response = await fetch(url, options);
-const data = await response.json();
+const data = await response.json();  //.json() omvandlar sträng från API till objekt.
 const menu = data.items
 const counterCart = document.getElementById('counterCart');
 const counterContainer = document.querySelector('.counterContainer')
@@ -176,7 +176,6 @@ drinks.forEach (element => {
 
     getDrinks.appendChild(drinkName)
 })
-
 
 
 

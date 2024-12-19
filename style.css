@@ -72,6 +72,7 @@ body {
             border-radius: 4px;
             cursor: pointer;
             box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.16);
+            transition: all 0.7s ease-out;
         }
 
 
@@ -254,6 +255,7 @@ body {
                         background-color:var(--accent-color);
                         font-size: var(--font-size-large);
                         font-weight: 200;
+                        transition: all 0.7s ease-out;
                     }
                 }
             }
@@ -302,6 +304,7 @@ body {
                     border-style: none;
                     border-radius: 4px;
                     cursor: pointer;
+                    transition: all 0.7s ease-out;
                 }
 
                 
@@ -373,6 +376,7 @@ body {
         border: 1px solid var(--text-color-secondary);
         cursor: pointer;
         min-width: 22rem;
+        transition: all 0.7s ease-out;
        }
 
        button:nth-child(2) {
@@ -385,6 +389,7 @@ body {
         border-radius: 4px;
         cursor: pointer;
         min-width: 22rem;
+        transition: all 0.7s ease-out;
        }
 
     }
@@ -507,6 +512,7 @@ body {
         border-radius: 4px;
         cursor: pointer;
         min-width: 22rem;
+        transition: all 0.7s ease-out;
     }
 }
 
@@ -545,3 +551,6 @@ body {
     background-color: var(--text-color-primary);
 }
 
+#viewReceiptBtn:hover, #newOrderBtn:hover, #newOrderBtn2:hover, #checkoutBtn:hover {
+    color: black;
+}

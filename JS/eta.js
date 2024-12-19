@@ -13,7 +13,6 @@ const orderNr = document.querySelector('#orderNr');
 
 
 checkoutBtn.addEventListener('click', async () => {
-    
     orderView.classList.add('hide')
     menuView.classList.add('hide')
     etaView.classList.remove('hide')
@@ -34,18 +33,21 @@ checkoutBtn.addEventListener('click', async () => {
             "Content-Type": "application/json",
             "x-zocom": "yum-7BTxHCyHhzI",
         },
-        body: JSON.stringify(bodyToSend),
+        body: JSON.stringify(bodyToSend), // API:et kommunicerar endast i strängar, omvandlar till en sträng.
     };
-  
+    
     const apiUrl = "https://fdnzawlcf6.execute-api.eu-north-1.amazonaws.com/pbxr/orders"
 
     try {
-        const response = await fetch(apiUrl, options)
+        const response = await fetch(apiUrl, options) // POST av order till API och hämtning av bekräftelse av samma order, sker i samma kodrad. 
         const data = await response.json()
 
         if (response.ok) {
-          const etaDate = new Date(data.order.eta) 
-          const minutes = etaDate.getMinutes()  
+          const etaDate = new Date(data.order.eta) // omvandlar till inbyggt Date-objekt.
+          const etaTimeStamp = new Date(data.order.timestamp)
+          const timeDifference = etaDate - etaTimeStamp
+          const minutes = Math.round(timeDifference / 60000)
+          
           
           etaTimeElement.innerText = `ETA ${minutes} MIN`
           orderNr.innerText = `#${data.order.id}`
